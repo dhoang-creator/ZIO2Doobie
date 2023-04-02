@@ -12,6 +12,10 @@
 
 ## Use Cases & Context
 
+Following on from building a purely functional ZIO2 Application utilising the Service-Repository Model, we introduce the use of Doobie as the Functional JDBC Driver of choice. 
+
+We'll also be introducing the use of ZIO Cache here to cache responses polled from a Postgres DB. 
+
 ## Installation
 
 ## Getting Started
