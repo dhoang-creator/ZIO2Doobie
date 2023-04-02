@@ -22,4 +22,9 @@ class ConnectionDB(connectionPool: ConnectionPool) {
       }
   }
 
+  object ConnectionDB {
+    lazy val live: ZLayer[ConnectionPool, Nothing, ConnectionDB] =
+      ZLayer.fromFunction(ConnectionDB)(_)
+  }
+
 }
