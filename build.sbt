@@ -9,13 +9,31 @@ lazy val root = (project in file("."))
     name := "zioWeb"
   )
 
-lazy val zioVersion = "2.0.9"
+lazy val zioVersion = "2.0.10"
 
 libraryDependencies ++= Seq(
-  "dev.zio" %% "zio" % zioVersion,
-  "dev.zio" %% "zio-test" % zioVersion,
-  "dev.zio" %% "zio-test-sbt" % zioVersion,
-  "dev.zio" %% "zio-streams" % zioVersion
+  // ZIO Core & ZIO Streams
+  "dev.zio"           %% "zio"                  % zioVersion,
+  "dev.zio"           %% "zio-streams"          % zioVersion,
+
+  // Postgres DB
+  "org.postgresql"    % "postgresql"            % "42.5.4",
+
+  // Doobie
+  "org.tpolecat"      %% "doobie-core"          % "1.0.0-RC1",
+  "org.tpolecat"      %% "doobie-postgres"      % "1.0.0-RC1",
+
+  // slf4j
+  "ch.qos.logback"    % "logback-classic"       % "1.4.7",
+
+  // Test Frameworks
+  "dev.zio"           %% "zio-test"             % zioVersion      % Test,
+  "dev.zio"           %% "zio-test-sbt"         % zioVersion      % Test,
+  "org.scalactic"     %% "scalactic"            % "3.2.15"        % Test,
+  "org.scalatest"     %% "scalatest"            % "3.2.15"        % Test
+
+  // We should include a JUnit component to see how the tests pass and fail in the terminal
+
 )
 
 testFrameworks += TestFramework("zio.test.sbt.ZTestFramework")
